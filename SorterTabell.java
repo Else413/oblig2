@@ -59,39 +59,31 @@ public class SorterTabell {
     // b)
     public static <T extends Comparable<? super T>> void sorteringToElement(T[] a, int forste, int siste) {
 
-        for(int i = forste + 1; i <= siste; i++) {
-            int minIndex = i;
-            int maxIndex = i;
+            while(forste < siste) {
+                int min = forste; // antar at første er minst
+                int max = forste; // antar at første er størst
 
-            for(int j = i + 1; j <= siste; j++) {
-                if(a[j].compareTo(a[minIndex]) < 0) {
-                    minIndex = j;
+                // finner minste og største i intervallet[forste, siste]
+                for(int i = forste + 1; i <= siste; i++) {
+                    if(a[i].compareTo(a[min]) < 0) {
+                        min = i;
+                    }
+
+                    if(a[i].compareTo(a[max]) > 0) {
+                        max = i;
+                    }
+
+                    swap(a, forste, min);
+                    if(max == forste) {
+                        max = min;
+                    }
+
+                    swap(a, siste, max);
+
+                    forste++;
+                    siste--;
                 }
-                if(a[j].compareTo(a[maxIndex]) > 0) {
-                    maxIndex = j;
-                }
             }
-
-            T temp = a[minIndex];
-            a[minIndex] = a[i];
-            a[i] = temp;
-
-            temp = a[maxIndex];
-            a[maxIndex] = a[siste];
-            a[siste] = temp;
-
-            T minste = a[i];
-            int j = i - 1;
-            while (j >= forste && a[j].compareTo(minste) > 0) {
-                a[j+1] = a[j];
-                j--;
-            }
-            a[j+1] = minste;
-
-            if(maxIndex == minIndex) {
-                maxIndex = i;
-            }
-        }
     }
 
     // c)
