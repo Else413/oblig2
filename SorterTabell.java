@@ -56,5 +56,48 @@ public class SorterTabell {
 
     }
 
+    // b)
+    public static <T extends Comparable<? super T>> void sorteringToElement(T[] a, int forste, int siste) {
+
+        for(int i = forste + 1; i <= siste; i++) {
+            int minIndex = i;
+            int maxIndex = i;
+
+            for(int j = i + 1; j <= siste; j++) {
+                if(a[j].compareTo(a[minIndex]) < 0) {
+                    minIndex = j;
+                }
+                if(a[j].compareTo(a[maxIndex]) > 0) {
+                    maxIndex = j;
+                }
+            }
+
+            T temp = a[minIndex];
+            a[minIndex] = a[i];
+            a[i] = temp;
+
+            temp = a[maxIndex];
+            a[maxIndex] = a[siste];
+            a[siste] = temp;
+
+            T minste = a[i];
+            int j = i - 1;
+            while (j >= forste && a[j].compareTo(minste) > 0) {
+                a[j+1] = a[j];
+                j--;
+            }
+            a[j+1] = minste;
+
+            if(maxIndex == minIndex) {
+                maxIndex = i;
+            }
+        }
+    }
+
+    // c)
+    public static <T extends Comparable<? super T>> void kombinertSortering(T[] a, int forste, int siste) {
+
+    }
+
 }
 
