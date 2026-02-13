@@ -1,12 +1,14 @@
 import java.util.Random;
 
+
+
 public class TabellSort {
 
         public static void main(String [] args) {
 
 
                 Random tilfeldig = new Random();
-                int n = 32000;
+                int n = 39200;
                 int antal = 10;
                 Integer[][] a = new Integer[antal][n];
 
@@ -26,10 +28,17 @@ public class TabellSort {
                         long slutt = System.nanoTime() ;
                         totaltTid+=(slutt-start);
 
-                        double gjennomsnitt=totaltTid/(antal*1_000_000_000.0);
+
 
 
                 }
+
+                double gjennomsnitt=totaltTid/(antal*1_000_000_000.0);
+
+
+                System.out.println(gjennomsnitt);
+
+
 
 
         }
