@@ -8,7 +8,7 @@ public class TabellSort {
 
 
                 Random tilfeldig = new Random();
-                int n = 39200;
+                int n = 122_000;
                 int antal = 10;
                 Integer[][] a = new Integer[antal][n];
 
