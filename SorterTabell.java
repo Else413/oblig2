@@ -89,6 +89,17 @@ public class SorterTabell {
     // c)
     public static <T extends Comparable<? super T>> void kombinertSortering(T[] a, int forste, int siste) {
 
+        // flytt minste element
+        int minIndex = forste;
+    for(int i = forste + 1; i <= siste; i++) {
+        if(a[i].compareTo(a[minIndex]) < 0) {
+            minIndex = i;
+        }
+    }
+    swap(a, forste, minIndex);
+
+    sorteringToElement(a, forste + 1, siste);
+
     }
 
 }
